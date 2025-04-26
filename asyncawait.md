@@ -51,4 +51,44 @@ promesa.then((resultado) => {
 });
 ``` 
 
-## 
+La misma funcion asincrona pero usando async/await:
+
+```js
+async function probar_suerte() {
+    const suerte = Math.random() > 0.5; // Genera un número aleatorio entre 0 y 1
+    sleep(suerte)
+    if (suerte) {
+        return "Ganaste";
+    } else {
+        throw new Error("Perdiste");
+    }
+}
+const resultado = await probar_suerte(); // ejecuta la funcion asincrona
+console.log("Resultado:", resultado);
+```
+
+## Async en abstracto
+
+Veamos un ejemplo mas reducido de como funciona async/await:
+
+```js
+async function test(){
+    return "Hola Mundo"
+}
+const resultado = test() // ejecuta la funcion asincrona
+console.log(resultado) // Es una promesa, deberiamos resolverla si queremos el resultado
+```
+
+Async hace que cualquier valor devuelto por la funcion se convierta en una promesa, prueba a eliminar el async y veras que no se convierte en una promesa, sino que se devuelve el valor directamente.
+
+## Await en abstracto
+```js
+async function test(){
+    return "Hola Mundo"
+}
+const resultado = await test() // ejecuta la funcion asincrona
+console.log(resultado) // Es una promesa, deberiamos resolverla si queremos el resultado
+```
+
+Await **solo** puede usarse dentro de funciones asincronas, y hace que el programa espere a que la promesa se resuelva antes de continuar. Si la promesa se resuelve correctamente, el valor devuelto por la promesa se asigna a la variable. Si la promesa es rechazada, se lanza un error.
+
