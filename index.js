@@ -1,7 +1,9 @@
 import express from "express";
 import nunjucks from "nunjucks";
 import { User } from "./models/user.js";
+import { loggerBasic, loggerCustom } from "./middleware/log.js";
 const app = express();
+app.use(loggerCustom);
 const PORT = 3000;
 
 const env = nunjucks.configure("views", {
@@ -10,23 +12,13 @@ const env = nunjucks.configure("views", {
 })
 
 app.set("view engine", "njk")
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', async (req, res) => {
-    const usersRaw = await User.findAll()
-    const users = usersRaw.map(user => {
-        return {
-            id: user.id,
-            name: user.username,
-            pass: user.password,
-        }
-    })
-    console.log(users)
-    res.render("test", {
-        title: "Test de nunjucks",
-        desc: "Probando mi motor de plantillas" ,
-        users
-    })
-});
+import usersRouter from "./routes/users.js";
+import pagesRouter from "./routes/pages.js";
+app.use("/users", usersRouter);
+app.use("/", pagesRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

@@ -12,8 +12,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "chalk": "^5.4.1",
     "connect-sqlite3": "^0.9.15",
     "express": "^5.1.0",
+    "morgan": "^1.10.0",
     "nunjucks": "^3.2.4",
     "sequelize": "^6.37.7"
   }

@@ -1,8 +1,22 @@
-<h1>{{title}}</h1>
-<p>{{desc}}</p>
+{% extends "base.njk" %}
 
-<ul>
-{% for user in users %}
-    <li>user.name: {{user.name}}</li>
-{% endfor %}
-</ul>
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>pass</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.pass }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>    
+</table>
+{% endblock %}
