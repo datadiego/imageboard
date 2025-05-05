@@ -1,4 +1,6 @@
 import { User } from "../models/user.js";
+import { Board } from "../models/board.js";
+import { Post } from "../models/post.js";
 import bcrypt from "bcrypt";
 
 const populateUsers = async () => {
@@ -17,4 +19,33 @@ const populateUsers = async () => {
     }
 }
 
-populateUsers()
+const populateBoards = async () => {
+    const boards = ["General", "Sports", "Technology"]
+    for (const board of boards) {
+        await Board.create({
+            name: board
+        })
+    }
+}
+
+const populatePosts = async () => {
+    const posts = [ "hola", "adios", "buenas tardes"]
+    for (const post of posts) {
+        await Post.create({
+            title: post,
+            content: "contenido",
+            boardId: 1,
+            userId: 1
+        })
+    }
+}
+
+try{
+    await populatePosts()
+    await populateBoards()
+    await populateUsers()
+}catch(error){
+    console.error("Error populating the database:", error);
+} finally{
+    process.exit(0);
+}

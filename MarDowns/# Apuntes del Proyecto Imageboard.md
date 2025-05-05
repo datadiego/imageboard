@@ -287,6 +287,8 @@ Este proyecto es un **imageboard** que permite a los usuarios interactuar con ta
 ### **`db/sessions.sqlite`**
 - **Propósito**: Almacena las sesiones de usuario. Gestionado automáticamente por `connect-sqlite3`.
 
+## Diagrama ER
+- https://mermaid.js.org/syntax/entityRelationshipDiagram.html
 ---
 
 ¡Estudia estos apuntes para entender cómo funciona cada parte del proyecto!
