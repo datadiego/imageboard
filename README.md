@@ -172,4 +172,50 @@ CREATE TABLE users (
 );
 ```
 
+## Entidad Relacion
 
+```mermaid
+---
+title: Imageboard
+---
+erDiagram
+    USER {
+        int id PK
+        string username
+        string password
+        date createdAt
+        date updatedAt
+    }
+
+    POST {
+        int id PK
+        string title
+        string content
+        string image
+        int userId FK
+        int boardId FK
+        date createdAt
+        date updatedAt
+    }
+
+    COMMENT {
+        int id PK
+        string content
+        int userId FK
+        int postId FK
+        date createdAt
+        date updatedAt
+    }
+
+    BOARD {
+        int id PK
+        string name
+        date createdAt
+        date updatedAt
+    }
+
+    USER ||--o{ POST : escribe
+    USER ||--o{ COMMENT : comenta
+    BOARD ||--o{ POST : contiene
+    POST ||--o{ COMMENT : recibe
+    ```
