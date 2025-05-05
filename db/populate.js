@@ -1,5 +1,6 @@
 import { User } from "../models/user.js";
 import { Board } from "../models/board.js";
+import { Post } from "../models/post.js";
 import bcrypt from "bcrypt";
 
 const populateUsers = async () => {
@@ -27,5 +28,25 @@ const populateBoards = async () => {
     }
 }
 
-populateUsers()
-populateBoards()
+const populatePosts = async () => {
+    const mensajes = ["hola mundo", "como estan?", "todo bien?"]
+    for(const mensaje of mensajes) {
+        await Post.create({
+            title: mensaje,
+            content: mensaje,
+            image: null,
+            userId: 1,
+            boardId: 1
+        })
+    }
+}
+
+try{
+    await populateUsers()
+    await populateBoards()
+    await populatePosts()
+} catch(error) {
+    console.error("Error al crear los datos de prueba", error)
+} finally {
+    process.exit(0)
+}
