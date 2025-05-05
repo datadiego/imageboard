@@ -1,4 +1,5 @@
 import { User } from "../models/user.js";
+import { Board } from "../models/board.js";
 import bcrypt from "bcrypt";
 
 const populateUsers = async () => {
@@ -17,4 +18,14 @@ const populateUsers = async () => {
     }
 }
 
+const populateBoards = async () => {
+    const boards = ["general", "videojuegos", "testing"]
+    for (const board of boards) {
+        await Board.create({
+            name: board
+        })
+    }
+}
+
 populateUsers()
+populateBoards()

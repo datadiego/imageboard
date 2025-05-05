@@ -1,5 +1,6 @@
 import { sequelize } from "./sequelize.js";
-import { User } from "../models/user.js";
+
+import "./associations.js"
 
 const initializeDB = async () => {
     try{
