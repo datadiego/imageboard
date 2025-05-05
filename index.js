@@ -7,7 +7,7 @@ import SQLiteStore from "connect-sqlite3";
 const app = express();
 app.use(loggerCustom);
 import "./db/init.js";
-import "./db/populate.js";
+import "./db/associations.js";
 const PORT = 3000;
 
 const SQLiteStoreSession = SQLiteStore(session);
