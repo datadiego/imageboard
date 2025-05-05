@@ -19,3 +19,17 @@ export const User = sequelize.define('User', {
 }, {
     tableName: "users",
 });
+
+export const Board = sequelize.define('Board', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+}, {
+    tableName: "boards",
+});
