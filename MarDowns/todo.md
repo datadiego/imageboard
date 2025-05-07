@@ -48,4 +48,10 @@ USER {
  - Vistas: BOARDS.NJK, BOARD.NJK
  - ROUTER: BOARD Y POST
 
- 
+ # EXAMEN
+ - BBDD de frutería:
+    - Introducir Frutas
+    - Borrar Frutas
+    - Consultar Frutas
+    
+-   Con MVC

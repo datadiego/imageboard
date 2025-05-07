@@ -3,5 +3,5 @@
 {% block content %}
   <h1>Perfil</h1>
   <p>Bienvenido, {{ user }}!</p>
-  <button type ="submit" hx-get="/login" hx-target="body">Cerrar sesión</button>
+  <button onclick ="location.href='/auth/logout'">Cerrar sesión</button>
 {% endblock %}

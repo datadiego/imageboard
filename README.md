@@ -179,4 +179,5 @@ CREATE TABLE users (
 # Errores
 - aparece en json el usuario y cuando refrescas sale en nunjks
 - contraseñas en el input
-
+- se pueden ver publicas los usuarios
+- No hay página ppal
