@@ -10,6 +10,7 @@ router.get("/register", (req, res) => {
         desc: "Register a new user",
     });
 });
+
 router.get("/login", (req, res) => {
     res.render("login", {
         title: "Login",

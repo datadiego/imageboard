@@ -41,11 +41,12 @@ const populatePosts = async () => {
 }
 
 try{
-    await populatePosts()
-    await populateBoards()
     await populateUsers()
+    await populateBoards()
+    await populatePosts()
 }catch(error){
     console.error("Error populating the database:", error);
 } finally{
-    process.exit(0);
+    //process.exit(0);
+    console.log("Database populated successfully");
 }

@@ -47,3 +47,5 @@ USER {
 # Tareas2
  - Vistas: BOARDS.NJK, BOARD.NJK
  - ROUTER: BOARD Y POST
+
+ 

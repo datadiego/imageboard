@@ -171,5 +171,12 @@ CREATE TABLE users (
     password STRING NOT NULL
 );
 ```
+# Apuntes 
+- nodemon es lo mismo que node pero node para actualizar cosas necesitas reiniciarlo, nodemon lo actualiza todo en tiempo real
+- hay que poner en orden los populate
+- "start": "nodemon -e js,html,css,njk,json index.js", (esto en el package.json sirve para hacer el npm run start)
 
+# Errores
+- aparece en json el usuario y cuando refrescas sale en nunjks
+- contraseñas en el input
 

@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
         username,
         password: hashedPassword,
     });
-    res.status(201).json(user);
+    res.status(201).redirect("/login");
 });
 
 export default router;
