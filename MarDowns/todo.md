@@ -1,9 +1,9 @@
 # Tareas
 
-- Crear unauthorized.njk
-- Logout
-- Crear modelo Boards
-- Crear diagrama ER para el imageboard
+- Crear unauthorized.njk []
+- Logout []
+- Crear modelo Boards []
+- Crear diagrama ER para el imageboard []
 
 - (OYEEEEE EN EN EL ER METE UN POST)
 - Solo pon si es un foreing key o un prumary key
