@@ -48,5 +48,6 @@ try{
 } catch(error) {
     console.error("Error al crear los datos de prueba", error)
 } finally {
-    process.exit(0)
+    console.log("Datos de prueba creados")
+    // process.exit(0)
 }
