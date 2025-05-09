@@ -1,6 +1,12 @@
 {% extends "base.njk" %}
 
 {% block content %}
-<h1>Board</h1>
+{% include "boards.njk" %}
+{# <h1>Board</h1> #}
+{# {% include "formPost.njk" %} #}
 <p>{{board.name}}</p>
+{% for post in posts %}
+    <p>>{{ post.title }}</p>
+    <p>{{ post.content }}</p>
+{% endfor %}
 {% endblock %}

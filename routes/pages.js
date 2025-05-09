@@ -2,7 +2,8 @@ import express from 'express';
 import { isAuthenticated } from '../middleware/auth.js';
 const router = express.Router();
 import { Board } from '../models/board.js';
-
+import { Post } from '../models/post.js';
+import { User } from '../models/user.js';
 router.get("/register", (req, res) => {
     res.render("register", {
         title: "Register",
@@ -46,7 +47,9 @@ router.get("/boards/:id", isAuthenticated, async (req, res) => {
         order: [["updatedAt", "DESC"]],
     })
     const boards = await Board.findAll();
-    res.render("board", {board})
+    console.log(board)
+    console.log(posts)
+    res.render("board", {board, posts, boards})
 })
 
 export default router;

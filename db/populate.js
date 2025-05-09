@@ -32,11 +32,11 @@ const populatePosts = async () => {
     const mensajes = ["hola mundo", "como estan?", "todo bien?"]
     for(const mensaje of mensajes) {
         await Post.create({
-            title: mensaje,
+            title: "titulo "+mensaje,
             content: mensaje,
             image: null,
             userId: 1,
-            boardId: 1
+            boardId: 3
         })
     }
 }
