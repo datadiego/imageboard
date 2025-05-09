@@ -1,0 +1,7 @@
+<ul>
+{% for board in boards %}
+    <li>
+        <a href="/boards/{{ board.id }}">{{ board.name }}</a>
+    </li>
+{% endfor %}
+</ul>

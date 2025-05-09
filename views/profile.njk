@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1>Perfil</h1>
+  {% include "boards.njk" %}
   <p>Bienvenido, {{ user }}!</p>
   <button onclick="location.href='/auth/logout'">Cerrar sesión</button>
 {% endblock %}

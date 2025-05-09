@@ -1,6 +1,7 @@
 import express from 'express';
 import { isAuthenticated } from '../middleware/auth.js';
 const router = express.Router();
+import { Board } from '../models/board.js';
 
 router.get("/register", (req, res) => {
     res.render("register", {
@@ -15,8 +16,37 @@ router.get("/login", (req, res) => {
     });
 });
 
-router.get("/profile", isAuthenticated, (req, res) => {
+router.get("/profile", isAuthenticated, async (req, res) => {
     const user = req.session.username;
-    res.render("profile", {user})
+    const boardsRaw = await Board.findAll();
+    const boards = boardsRaw.map((board) => {
+        return {
+            id: board.id,
+            name: board.name
+        };
+    });
+    console.log(boards)
+    res.render("profile", {user, boards})
 });
+
+router.get("/boards/:id", isAuthenticated, async (req, res) => {
+    const id = req.params.id;
+    const board = await Board.findByPk(id);
+    const posts = await Post.findAll({
+        where: {
+            boardId: id,
+        },
+        include: [
+            {
+                model: User,
+                as: "user",
+                attributes: ["username"],
+            },
+        ],
+        order: [["updatedAt", "DESC"]],
+    })
+    const boards = await Board.findAll();
+    res.render("board", {board})
+})
+
 export default router;
