@@ -1,0 +1,13 @@
+{% extends "base.njk" %}
+
+{% block content %}
+    {%include "boards.njk" %}
+    <h1>Board</h1>
+    {%include "fromPosts.njk" %}
+    <p>{{ board.name }}</p>
+    <p>{{posts[0].content}}</p>
+    {% for post in posts%}
+    <p>{{post.title}}</p>
+    <p>{{post.content}}</p>
+    {% endfor %}
+{% endblock %}

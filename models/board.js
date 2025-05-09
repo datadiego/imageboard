@@ -10,6 +10,7 @@ export const Board = sequelize.define('Board', {
     name: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
     },
 }, {
     tableName: "boards",
