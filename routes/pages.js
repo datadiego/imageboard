@@ -3,6 +3,7 @@ import { isAuthenticated } from '../middleware/auth.js';
 import { Board } from '../models/board.js';
 import { Post } from '../models/post.js';
 import { User } from '../models/user.js';
+import { Comment } from '../models/comment.js';
 const router = express.Router();
 
 router.get("/register", (req, res) => {
@@ -50,18 +51,27 @@ router.get("/boards/:id", isAuthenticated, async (req, res) => {
     const id = req.params.id;
     const board = await Board.findByPk(id);
     const posts = await Post.findAll({
-        where: {
-            boardId: id,
+    where: { boardId: id },
+    include: [
+        {
+            model: User,
+            as: "user",
+            attributes: ["username"],
         },
-        include: [
-            {
-                model: User,
-                as: "user",
-                attributes: ["username"],
-            },
-        ],
+        {
+            model: Comment,
+            as: "comments",
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                    attributes: ["username"],
+                }
+            ]
+        }
+    ],
         order: [["updatedAt", "DESC"]],
-    })
+    });
     const boards = await Board.findAll();
     console.log(posts);
     res.render("board", {board, posts, boards})

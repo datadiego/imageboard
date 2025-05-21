@@ -1,14 +1,24 @@
-{% extends "base.njk" %}
-
-{% block content %}
-    {%include "boards.njk" %}
-    <h1>Board</h1>
-    {%include "fromPosts.njk" %}
-    <p>{{ board.name }}</p>
-    <p>{{posts[0].content}}</p>
-    {% for post in posts %}
+{% for post in posts %}
+    <div class="post">
         <p><strong>{{ post.title }}</strong></p>
         <p>{{ post.content }}</p>
         <p>Creado por: {{ post.user.username }}</p>
-    {% endfor %}
-{% endblock %}
+
+        <div class="comments">
+            <h4>Comentarios</h4>
+            <ul>
+                {% for comment in post.comments %}
+                    <li>
+                        <strong>{{ comment.user.username }}:</strong> {{ comment.content }}
+                    </li>
+                {% else %}
+                    <li>No hay comentarios aún.</li>
+                {% endfor %}
+            </ul>
+            <form action="/posts/{{ post.id }}/comments" method="POST">
+                <textarea name="content" placeholder="Escribe un comentario..." required></textarea>
+                <button type="submit">Comentar</button>
+            </form>
+        </div>
+    </div>
+{% endfor %}
